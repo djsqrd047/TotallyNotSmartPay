@@ -77,7 +77,7 @@ namespace TotallyNotSmartPayAPI
 
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Invoicinator.API");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Totally Not SmartPay API");
             });
         }
     }
