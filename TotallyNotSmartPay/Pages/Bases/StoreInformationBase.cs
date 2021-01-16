@@ -40,7 +40,6 @@ namespace TotallyNotSmartPay.Pages.Bases
             {
                 await StoreInformationDataService.MarkAsDeleted(id);
             }
-            await Task.Run(() => StateHasChanged());
         }
 
         public void FilterStoreByNumber(ChangeEventArgs e)
