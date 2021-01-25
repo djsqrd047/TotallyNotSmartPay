@@ -6,64 +6,8 @@
 
 @if (AllStores == null && Columns == null)
 {
-    <div>Loading....</div>
-}
+<div>Loading....</div> }
 else
-{
-    <select @bind="FiltererdStoreNumber">
-        <option value="0">Select a store</option>
-        @foreach (var store in AllStores.Where(x => x.IsDeleted == ShowDeleted))
-        {
-            <option value="@store.StoreNumber">@store.StoreNumber</option>
-        }
-    </select>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                @foreach (var column in Columns)
-                {
-                    <td>@column</td>
-                }
-                <td></td>
-                <td></td>
-            </tr>
-        </thead>
-
-        @if (FiltererdStoreNumber == 0)
-        {
-            @foreach (var store in AllStores.Where(x => x.IsDeleted == ShowDeleted))
-            {
-                <tr>
-                    <td>@store.StoreNumber</td>
-                    <td>@store.Address</td>
-                    <td>@store.SINId</td>
-                    <td>@store.VINId</td>
-                    <td>@store.RINId</td>
-                    <td>@(store.IsDeleted ? "Yes" : "No")</td>
-                    <td><button class="btn-primary" type="submit" @onclick="() => EditStore(store.Id)">Edit</button></td>
-                    <td><button class="btn-primary" type="submit" @onclick="() => DeleteStore(store.Id)">Delete</button></td>
-                </tr>
-            }
-        }
-        else
-        {
-            @foreach (var store in AllStores.Where(x => x.IsDeleted == ShowDeleted && x.StoreNumber == FiltererdStoreNumber))
-            {
-                <tr>
-                    <td>@store.StoreNumber</td>
-                    <td>@store.Address</td>
-                    <td>@store.SINId</td>
-                    <td>@store.VINId</td>
-                    <td>@store.RINId</td>
-                    <td>@(store.IsDeleted ? "Yes" : "No")</td>
-                    <td><button class="btn-primary" type="submit" @onclick="() => EditStore(store.Id)">Edit</button></td>
-                    <td><button class="btn-primary" type="submit" @onclick="() => DeleteStore(store.Id)">Delete</button></td>
-                </tr>
-            }
-        }
-
-    </table>
-    <button class="btn-primary" type="submit" @onclick="() => EditStore(0)">Add New Store</button>
-    <div>Show Deleted?</div>
-    <input type="checkbox" @onchange="() => ShowDeleted = !ShowDeleted" />
+{ 
+                <StoreInfoGrid ColumnNames="Columns" StoreList="AllStores"></StoreInfoGrid>
 }

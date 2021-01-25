@@ -10,6 +10,7 @@ namespace TotallyNotSmartPayModels
         [Key]
         public int Id { get; set; }
         [Required]
+        [Range(1, 100000, ErrorMessage = "Store Number must be between 1 and 100000.")]
         public int StoreNumber { get; set; }
         [Required]
         public string Address { get; set; }

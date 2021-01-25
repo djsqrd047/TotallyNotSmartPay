@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyNotSmartPay", "TotallyNotSmartPay\TotallyNotSmartPay.csproj", "{596BA6B7-0298-41FD-BA0A-6A786DB58CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotallyNotSmartPay", "TotallyNotSmartPay\TotallyNotSmartPay.csproj", "{596BA6B7-0298-41FD-BA0A-6A786DB58CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyNotSmartPayModels", "TotallyNotSmartPayModels\TotallyNotSmartPayModels.csproj", "{B1629931-E0DC-4B7C-81CC-06004FC00709}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotallyNotSmartPayModels", "TotallyNotSmartPayModels\TotallyNotSmartPayModels.csproj", "{B1629931-E0DC-4B7C-81CC-06004FC00709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyNotSmartPayAPI", "TotallyNotSmartPayAPI\TotallyNotSmartPayAPI.csproj", "{85C644CA-0820-4C99-A719-64164B09E5CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotallyNotSmartPayAPI", "TotallyNotSmartPayAPI\TotallyNotSmartPayAPI.csproj", "{85C644CA-0820-4C99-A719-64164B09E5CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyNotSmartPayDbContext", "TotallyNotSmartPayDbContext\TotallyNotSmartPayDbContext.csproj", "{50AEECC5-B188-4D63-82FB-7605462C8490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotallyNotSmartPayDbContext", "TotallyNotSmartPayDbContext\TotallyNotSmartPayDbContext.csproj", "{50AEECC5-B188-4D63-82FB-7605462C8490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyNotSmartPayServices", "TotallyNotSmartPayServices\TotallyNotSmartPayServices.csproj", "{D93779C9-A067-4988-94A7-DA82626AC5A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotallyNotSmartPayServices", "TotallyNotSmartPayServices\TotallyNotSmartPayServices.csproj", "{D93779C9-A067-4988-94A7-DA82626AC5A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

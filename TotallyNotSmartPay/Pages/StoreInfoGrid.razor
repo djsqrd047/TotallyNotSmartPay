@@ -1,0 +1,89 @@
+﻿@using TotallyNotSmartPay.UIServices.Interfaces;
+@using TotallyNotSmartPay.Pages.Bases;
+
+<select @bind="FiltererdStoreNumber">
+    <option value="0">Select a store</option>
+    @foreach (var store in StoreList.Where(x => x.IsDeleted == ShowDeleted))
+    {
+<option value="@store.StoreNumber">@store.StoreNumber</option>}
+</select>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            @foreach (var column in ColumnNames)
+            {
+<td>@column</td>}
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    @if (FiltererdStoreNumber == 0)
+    {
+@foreach (var store in StoreList.Where(x => x.IsDeleted == ShowDeleted))
+{
+<tr id="Store_@(store.StoreNumber)_ID">
+
+    <td>@store.StoreNumber</td>
+    <td>@store.Address</td>
+    <td>@store.SINId</td>
+    <td>@store.VINId</td>
+    <td>@store.RINId</td>
+    <td>@(store.IsDeleted ? "Yes" : "No")</td>
+    <td><button class="btn-primary" type="submit" @onclick="() => EditStore(store.Id)">Edit</button></td>
+    @if (!store.IsDeleted)
+    {
+<td><button class="btn-primary" type="submit" @onclick="() => DeleteStore(store.Id)">Delete</button></td>}
+</tr>} }
+else
+{
+@foreach (var store in StoreList.Where(x => x.IsDeleted == ShowDeleted && x.StoreNumber == FiltererdStoreNumber))
+{
+<tr>
+    <td>@store.StoreNumber</td>
+    <td>@store.Address</td>
+    <td>@store.SINId</td>
+    <td>@store.VINId</td>
+    <td>@store.RINId</td>
+    <td>@(store.IsDeleted ? "Yes" : "No")</td>
+    <td><button class="btn-primary" type="submit" @onclick="() => EditStore(store.Id)">Edit</button></td>
+    @if (!store.IsDeleted)
+    {
+<td><button class="btn-primary" type="submit" @onclick="() => DeleteStore(store.Id)">Delete</button></td>}
+</tr>}}
+
+
+</table>
+<button class="btn-primary" type="submit" @onclick="() => EditStore(0)">Add New Store</button>
+<div>Show Deleted?</div>
+<input type="checkbox" @onchange="() => ShowDeleted = !ShowDeleted" />
+
+@code{ 
+            [Parameter]
+            public List<string> ColumnNames { get; set; }
+            [Parameter]
+            public List<TotallyNotSmartPayModels.StoreInformation> StoreList { get; set; }
+            public bool ShowDeleted { get; set; } = false;
+            public int FiltererdStoreNumber { get; set; }
+            [Inject]
+            public NavigationManager NavigationManager { get; set; }
+            [Inject]
+            IJSRuntime JS { get; set; }
+            [Inject]
+            public IStoreInformationDataService StoreInformationDataService { get; set; }
+
+
+
+            public void EditStore(int id) => NavigationManager.NavigateTo($"/storeinformation/{id}");
+
+            public async Task DeleteStore(int id)
+            {
+                if (await JS.InvokeAsync<bool>("confirm", "Are you sure you want to mark this store as deleted?"))
+                {
+                    if (await JS.InvokeAsync<bool>("exampleJsFunctions.deleteStoreDisplayNumber", StoreList.Where(x => x.Id == id).FirstOrDefault().StoreNumber))
+                        await StoreInformationDataService.MarkAsDeleted(id);
+                }
+                //StateHasChanged();
+                NavigationManager.NavigateTo($"/storeinformation", forceLoad: true);
+            } 
+    
+    }

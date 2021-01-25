@@ -3,58 +3,60 @@
 @using TotallyNotSmartPayModels;
 @inherits StoreDetailBase;
 
-@if (StoreInformation == null)
-{
-    <p><em>Loading...</em></p>
-}
+<section class="edit-page">
+    @if (StoreInformation == null)
+    {
+<p><em>Loading...</em></p> }
 else
 {
-    <h1 class="page-title">@(StoreInformation.StoreNumber != 0 ? $"Details for {@StoreInformation.StoreNumber}" : "Enter new store information")</h1>
-    @if (!string.IsNullOrEmpty(Message))
-    {
-        <div class="alert @StatusClass">@Message</div>
-    }
-    <EditForm Model="@StoreInformation" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+<h1 class="page-title">@(StoreInformation.StoreNumber > 0  ? $"Details for {@StoreInformation.StoreNumber}" : "Enter new store information")</h1>
+                @if (!string.IsNullOrEmpty(Message))
+                {
+                    <div class="alert @StatusClass">@Message</div>
+                }
 
-        <div class="form-group row">
-            <label for="name" class="col-sm-3">Store Number: </label>
+                                <EditForm Model="@StoreInformation" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+                                    <DataAnnotationsValidator />
+                                    <ValidationSummary />
 
-            <InputNumber id="storeNumber" class="form-control col-sm-8" @bind-Value="@StoreInformation.StoreNumber" placeholder="ex: 123"></InputNumber>
-            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.StoreNumber)" />
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-3">Address: </label>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3">Store Number: </label>
 
-            <InputText id="address" class="form-control col-sm-8" @bind-Value="@StoreInformation.Address" placeholder="ex: 123 Somewhere St"></InputText>
-            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.Address)" />
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-3">SINId: </label>
+                                        <InputNumber id="storeNumber" class="form-control col-sm-8" @bind-Value="@StoreInformation.StoreNumber" placeholder="ex: 123"></InputNumber>
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.StoreNumber)" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3">Address: </label>
 
-            <InputNumber id="sinId" class="form-control col-sm-8" @bind-Value="@StoreInformation.SINId" placeholder="ex: 123"></InputNumber>
-            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.SINId)" />
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-3">VINId: </label>
+                                        <InputText id="address" class="form-control col-sm-8" @bind-Value="@StoreInformation.Address" placeholder="ex: 123 Somewhere St"></InputText>
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.Address)" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3">SINId: </label>
 
-            <InputNumber id="vinId" class="form-control col-sm-8" @bind-Value="@StoreInformation.VINId" placeholder="ex: 123"></InputNumber>
-            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.VINId)" />
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-3">RINId: </label>
+                                        <InputNumber id="sinId" class="form-control col-sm-8" @bind-Value="@StoreInformation.SINId" placeholder="ex: 123"></InputNumber>
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.SINId)" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3">VINId: </label>
 
-            <InputText id="rinId" class="form-control col-sm-8" @bind-Value="@StoreInformation.RINId" placeholder="ex: ABC123"></InputText>
-            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.RINId)" />
-        </div>
-        <div class="form-group row">
-            <label for="storeInformation" class=" offset-sm-3">
-                <InputCheckbox id="isDeleted" @bind-Value="@StoreInformation.IsDeleted"></InputCheckbox>
-                &nbsp;Deleted?
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Save Store</button>
-    </EditForm>
-}
+                                        <InputNumber id="vinId" class="form-control col-sm-8" @bind-Value="@StoreInformation.VINId" placeholder="ex: 123"></InputNumber>
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.VINId)" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3">RINId: </label>
+
+                                        <InputText id="rinId" class="form-control col-sm-8" @bind-Value="@StoreInformation.RINId" placeholder="ex: ABC123"></InputText>
+                                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => @StoreInformation.RINId)" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="storeInformation" class=" offset-sm-3">
+                                            <InputCheckbox id="isDeleted" @bind-Value="@StoreInformation.IsDeleted"></InputCheckbox>
+                                            &nbsp;Deleted?
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Store</button>
+                                </EditForm>}
+</section>
+
 

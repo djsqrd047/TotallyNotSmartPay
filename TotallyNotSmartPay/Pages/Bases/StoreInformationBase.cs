@@ -38,8 +38,11 @@ namespace TotallyNotSmartPay.Pages.Bases
         {
             if (await JS.InvokeAsync<bool>("confirm", "Are you sure you want to mark this store as deleted?"))
             {
+                if(await JS.InvokeAsync<bool>("exampleJsFunctions.deleteStoreDisplayNumber", AllStores.Where(x => x.Id == id).FirstOrDefault().StoreNumber))
                 await StoreInformationDataService.MarkAsDeleted(id);
             }
+            //StateHasChanged();
+            NavigationManager.NavigateTo($"/storeinformation", forceLoad: true);
         }
 
         public void FilterStoreByNumber(ChangeEventArgs e)

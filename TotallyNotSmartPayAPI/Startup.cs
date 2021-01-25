@@ -50,7 +50,8 @@ namespace TotallyNotSmartPayAPI
 
             services.AddDbContext<MyDbContext>(options =>
             {
-                options.UseSqlServer(@"Server=localhost\\SQLEXPRESS01;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");
+                //options.UseSqlServer(@"Server=localhost\\SQLEXPRESS01;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");
+                options.UseSqlServer(@"Server=localhost\\SQLEXPRESS;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");//work
             });
         }
 
