@@ -101,14 +101,7 @@ namespace TotallyNotSmartPayServices
                 }
                 else
                 {
-                    var storeToUpdate = GetStoreInformation(storeInformation.Id);
-                    storeToUpdate.StoreNumber = storeInformation.StoreNumber;
-                    storeToUpdate.Address = storeInformation.Address;
-                    storeToUpdate.SINId = storeInformation.SINId;
-                    storeToUpdate.VINId = storeInformation.VINId;
-                    storeToUpdate.RINId = storeInformation.RINId;
-                    storeToUpdate.IsDeleted = storeInformation.IsDeleted;
-                    saved = true;
+                    _context.Update(storeInformation);
                 }
             }
             catch (Exception ex)
