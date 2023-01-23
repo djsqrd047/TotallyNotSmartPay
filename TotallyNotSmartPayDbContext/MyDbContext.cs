@@ -23,8 +23,8 @@ namespace TotallyNotSmartPayDbContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");//work
+            //optionsBuilder.UseSqlServer("Server=****;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=****;Database=TotallyNotSmartPayDB;Trusted_Connection=True;");//work
             base.OnConfiguring(optionsBuilder);
         }
     }
